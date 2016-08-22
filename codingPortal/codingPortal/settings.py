@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hackerspace',
     'quiz',
-    'staff',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -71,12 +70,10 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = 'codingPortal.wsgi.application'
 
 
-# Database 
+# Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
@@ -92,7 +89,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-
+    
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
