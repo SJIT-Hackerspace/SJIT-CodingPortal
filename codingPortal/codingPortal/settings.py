@@ -70,10 +70,12 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'codingPortal.wsgi.application'
 
 
-# Database
+# Database 
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
