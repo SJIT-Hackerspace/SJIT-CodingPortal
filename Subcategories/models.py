@@ -24,6 +24,9 @@ class QuizSubCategories(models.Model):
 class ProgrammingSubCategories(models.Model):
 	name = models.CharField((u"Tag Name"),max_length=200)
 
+	class Meta:
+		verbose_name = 'Programming'
+		verbose_name_plural = 'Programming'
 
 
 	def __str__(self):
