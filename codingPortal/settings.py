@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'misc',
     'Subcategories',
     'Questions',
+    'Student',
     
 ]
 
