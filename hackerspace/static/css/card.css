@@ -1,0 +1,32 @@
+.questions{
+	margin-top: 2vh;
+	width: 77vw;
+	height: 30vh;
+	-moz-box-shadow: 2px 2px 1px grey;
+    -webkit-box-shadow: 2px 2px 1px grey;
+	box-shadow: 2px 2px 1px grey;
+
+	-moz-box-shadow: -2px 2px -1px grey;
+    -webkit-box-shadow: -2px -2px -1px grey;
+	box-shadow: -22px -2px -1px grey;
+
+	text-align: justify-all;
+}
+.border{
+	margin-top: 12vh;
+}
+body{
+	background-color: black;
+}
+.head{
+	width: 100%;
+	height: 6vh;
+	background-color: white;
+	text-align: center;
+	font-size: 2vw;
+	font-family: sans-serif;
+	-moz-box-shadow: 2px 2px 1px grey;
+    -webkit-box-shadow: 2px 2px 1px grey;
+	box-shadow: 2px 2px 1px grey;
+	
+}
