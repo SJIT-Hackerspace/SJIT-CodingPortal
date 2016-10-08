@@ -3,5 +3,5 @@ from django.template.response import TemplateResponse
 from Questions.models import *
 # Create your views here.
 def index(request):
-	ob=ProgrammingQuestion.objects.all().order_by('?')[:2]
+	ob=QuizQuestion.objects.all().order_by('?')[:4]
 	return TemplateResponse(request,"index.html",{'ob':ob})

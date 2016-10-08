@@ -7,14 +7,14 @@ class ProgrammingQuestion(models.Model):
 	question = models.TextField()
 	TestCases = models.CharField((u"Test Cases"),max_length=200)
 	Output = models.CharField(max_length=200)
-	subCategory = models.CharField(max_length=200,choices = tuple(tags))
+	subCategory = models.IntegerField(choices = tuple(tags))
 
 	class Meta:
 		verbose_name = 'Programming'
 		verbose_name_plural = 'Programming'
 
 	def __str__(self):
-		return self.question+self.subCategory
+		return self.question+str(self.subCategory)
 
 class QuizQuestion(models.Model):
 	
@@ -25,14 +25,14 @@ class QuizQuestion(models.Model):
 	op3 = models.CharField((u"Option3"),max_length=200)
 	op4 = models.CharField((u"Option4"),max_length=200)
 	Answer = models.CharField(max_length=200)
-	subCategory = models.CharField(max_length=200,choices = tuple(tags))
+	subCategory = models.IntegerField(choices = tuple(tags))
 
 	class Meta:
 		verbose_name = 'Quiz'
 		verbose_name_plural = 'Quiz'
 
 	def __str__(self):
-		return self.question+self.op1+self.op2+self.op3+self.op4+self.subCategory
+		return self.question+self.op1+self.op2+self.op3+self.op4+str(self.subCategory)
 
 class VerbalQuestion(models.Model):
 	tags = VerbalSubCategories.objects.values_list()
@@ -42,11 +42,11 @@ class VerbalQuestion(models.Model):
 	op3 = models.CharField((u"Option3"),max_length=200)
 	op4 = models.CharField((u"Option4"),max_length=200)
 	Answer = models.CharField(max_length=200)
-	subCategory = models.CharField(max_length=200,choices = tuple(tags))
+	subCategory = models.IntegerField(choices = tuple(tags))
 
 	class Meta:
 		verbose_name = 'Verbal'
 		verbose_name_plural = 'Verbal'
 
 	def __str__(self):
-		return self.question+self.op1+self.op2+self.op3+self.op4+self.subCategory
+		return self.question+self.op1+self.op2+self.op3+self.op4+str(self.subCategory)

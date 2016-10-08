@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html>
+{% load staticfiles %}
 <head>
-	<title></title>
+	<title>MCQ</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/card.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<script src="{% static 'js/bootstrap.min.js' %} "></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'mui-0.8.0/css/mui.min.css' %}">
+	<script src="{% static 'mui-0.8.0/js/mui.min.js' %} "></script>
+
+	<style type="text/css">
+		body{
+			background-color: #e6dcda;
+		}
+		.mui-panel{
+			width: 77vw;
+			height: 30vh;
+		}
+	</style>
+
 </head>
 <body>
-{% for rec in ob%}
-{{rec}}
-{% endfor %}
+<div class="head" data-spy="affix">Hackerspace</div>
+<div class="border">
+<div class="mui-container">
+<div class="container">
+<div class="row">
+	<div class="col-md-6">
+	{% for rec in ob%}
+	<div class="mui-panel">
+	{{rec.question}}<br><br>
+	<input type="radio" name="">{{rec.op1}}<br>
+	<input type="radio" name="">{{rec.op2}}<br>
+	<input type="radio" name="">{{rec.op3}}<br>
+	<input type="radio" name="">{{rec.op4}}
+	</div>
+	{% endfor %}
+	</div>
+	</div>
+</div>
+</div>
+</div>
 </body>
 </html>
