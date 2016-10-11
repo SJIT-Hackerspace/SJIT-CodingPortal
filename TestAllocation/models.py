@@ -25,7 +25,7 @@ class Programming(models.Model):
 
 
 	def __str__(self):
-		return str(self.TestName)+" "+str(self.pgmtags[int(self.ProgrammingTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
+		return str(self.pgmtags[int(self.ProgrammingTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
 
 class Quiz(models.Model):
 	dept = Department.objects.values_list()
@@ -45,8 +45,9 @@ class Quiz(models.Model):
 	class Meta:
 		verbose_name = 'Quiz'
 		verbose_name_plural = 'Quiz'
+		
 
 
 	def __str__(self):
-		return str(self.TestName)+" "+str(self.quiztags[int(self.QuizTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
+		return str(self.quiztags[int(self.QuizTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
 
