@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(Programming)
 admin.site.register(Quiz)
+admin.site.register(Verbal)

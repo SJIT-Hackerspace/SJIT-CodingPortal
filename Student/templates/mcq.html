@@ -17,6 +17,9 @@
 			width: 77vw;
 			height: 30vh;
 		}
+		.sub_button{
+			margin-left: 160%;
+		}
 	</style>
 
 </head>
@@ -27,15 +30,21 @@
 <div class="container">
 <div class="row">
 	<div class="col-md-6">
+	<form action="submit_test" method="POST"> 
+	{% csrf_token %}
 	{% for rec in ob%}
 	<div class="mui-panel">
 	{{rec.question}}<br><br>
-	<input type="radio" name="">{{rec.op1}}<br>
-	<input type="radio" name="">{{rec.op2}}<br>
-	<input type="radio" name="">{{rec.op3}}<br>
-	<input type="radio" name="">{{rec.op4}}
+	<input type="hidden" name="{{rec.question}}" value="{{rec.question}}">
+	<input type="radio" name="{{rec.op1}}" value="1">{{rec.op1}}<br>
+	<input type="radio" name="{{rec.op2}}" value="2">{{rec.op2}}<br>
+	<input type="radio" name="{{rec.op3}}" value="3">{{rec.op3}}<br>
+	<input type="radio" name="{{rec.op4}}" value="4">{{rec.op4}}
+	
 	</div>
 	{% endfor %}
+	<button type="submit" class="sub_button">Submit</button>
+	</form>
 	</div>
 	</div>
 </div>

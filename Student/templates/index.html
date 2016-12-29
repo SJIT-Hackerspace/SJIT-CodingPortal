@@ -4,23 +4,67 @@
 	<title>Student Dashboard</title>
 </head>
 <body>
-<h3>Active Tests</h3>
+<h2>{{time}}</h2>
+<h3>Scheduled Tests</h3>
+<table border="2vw;">
+<tr>
+	<th>TestName</th>
+	<th>Start Date</th>
+	<th>Start Time</th>
+	<th>End Date</th>
+	<th>End Time</th>
+</tr>
+
 {% for test in tests %}
+<tr>
+<td>
+{{test.TestName}}
+</td>
+
+<td>
 {{test.StartDate}}
-{{test.StartTime}} - &nbsp;
+</td>
+<td>
+{{test.StartTime}} 
+</td>
+<td>
 {{test.EndDate}}
+</td>
+<td>
 {{test.EndTime}}
+</td>
+<td>
+<a href="mcq"><button>Take Test</button></a>
+</td>
+
+</tr>
 <br>
 {% endfor %}
-<br>{{time}}
-<br><br>
+</table>
+
 <h3>All Scheduled Tests</h3>
+<form action="test" method="post">
+{% csrf_token %}
+<table border="2vw;">
+<tr>
+	<th>TestName</th>
+	<th>Start Date</th>
+	<th>Start Time</th>
+	<th>End Date</th>
+	<th>End Time</th>
+	<th></th>
+</tr>
 {% for test in testsall %}
-{{test.StartDate}}
-{{test.StartTime}} - &nbsp;
-{{test.EndDate}}
-{{test.EndTime}}
-<br>
+<tr>
+<td>{{test.TestName}}</td>
+<td>{{test.StartDate}}</td>
+<td>{{test.StartTime}} </td>
+<td>{{test.EndDate}}</td>
+<td>{{test.EndTime}}</td>
+<!-- <input type="hidden" id="testname" name="testname" value="{{test.TestName}}"> -->
+<td><button type="submit" name="{{test.TestName}}" value="{{test.TestName}}">Take Test</button></td>
+</tr>
 {% endfor %}
+</table>
 </body>
 </html>
