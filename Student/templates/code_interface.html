@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{% load staticfiles %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HackerSpace</title>
+ <!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet" />
+       <!--CUSTOM BASIC STYLES-->
+    <link href="{% static 'assets/css/basic.css' %}" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" />
+    <link href="{%static 'assets/css/style.css' %}" rel="stylesheet">
+
+      <script src="{%static 'src/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <!-- <script src="{%static 'load.js' %}" type="text/javascript" charset="utf-8"></script> -->
+  <script src="{%static 'ace/ext-language_tools.js' %}"></script>
+      <script src="{%static 'src/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script src="{%static 'ace/ext-language_tools.js' %}"></script>
+    <script src="{%static 'js/jquery.js' %}"></script>
+    
+    <!-- GOOGLE FONTS-->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+
+    <style type="text/css">
+        ::-webkit-scrollbar{
+            width: 0.4em;
+            /*height: 0.4vh;*/
+    }
+
+::-webkit-scrollbar:active{
+        color: silver;
+    }    
+
+
+        ::-webkit-scrollbar-track {
+
+            background: #333333;
+            border-radius: 12px;
+            -webkit-box-shadow: inset 3px 1px 2px rgba(0,0,0,0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00CA79 ;
+            border-radius: 12px;  
+    
+        }
+
+
+    </style>
+
+
+<script language="JavaScript">
+  function processForm()
+  {
+    var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    l = unescape(temp[1]);
+    var q=l.split(":");
+      
+   var ques=q[1];
+   
+    var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+ if (xhttp.readyState == 4 && xhttp.status == 200) {
+ var res=xhttp.responseText.split(";");
+ //alert(xhttp.responseText);
+ var test=res[ques].split("testt");
+document.getElementById("ttt").innerHTML = test[0];
+//alert(q[2]);
+$("#qno").val(q[3]);
+$("#usrc").val(q[2]);
+$("#finalusername").val(q[2]);
+var test=test[1].split("out");
+$("#test").val(test[0]);
+var test=test[1].split("sub");
+$("#out").val(test[0]);
+$("#outc").val(test[0]);
+$("#outf").val(q[2]);
+$("#scorec").val(q[3]);
+$("#scoref").val(q[3]);
+$("#finalscore").val(q[3]);
+$("#testc").val(test[1]);
+q[0]=q[0].replace('+',' ');
+q[0]=q[0].replace('+',' ');
+q[0]=q[0].replace('+',' ');
+q[0]=q[0].replace('+',' ');
+document.getElementById("quest").innerHTML = unescape(q[0]);
+  }
+  };
+  
+xhttp.open("GET","quest.json",false);
+ 
+    xhttp.send();
+   
+
+
+
+  }
+  processForm();
+</script>
+
+<script type="text/javascript">
+function save_code(){
+  var editor = ace.edit("editor");
+  var code=editor.getValue();
+  var lang=document.getElementById('langc').value;
+  //alert(code);
+  var x=document.getElementById('cantime').value;
+  document.getElementById('time_save').value=x;
+
+  document.getElementById('source').value=code;
+  document.getElementById('language_selected').value=lang;
+  document.getElementById('source_code').submit();
+
+}
+</script>
+
+<script >
+    $(document).ready(function(){
+      //$("#moodleform").submit();
+      var res=$("#result").val();
+      var result=$("#username").val();
+      //alert(res);
+      if(res=="true"){
+//      alert(result);
+  //    alert(res);
+      
+      var score=$("#scoref").val();
+
+      score=score+1;
+      alert(score);
+      $("#scoref").val(score);
+      $("#scorec").val(score);
+document.getElementById('home').submit();
+
+
+      }
+      $('#chckout').click(function(){
+       document.getElementById('chck').submit(); 
+      })
+       $('.hed').click(function(){
+       // window.location.assign("http://192.168.2.94:8000/feed/");
+       //document.getElementById('home').submit();
+    }) ;
+       $('#sb').click(function(){
+        $(this).removeClass('btn-primary');
+        
+        if($(this).hasClass('btn-success')){
+          $(this).addClass('btn-primary');
+        }
+         $(this).addClass('btn-success');
+       });
+
+        $('.lol').click(function(){
+
+        var a=$(this).text();
+        var b=$(this).val();
+        $("#langc").val(this.value);
+        
+        $("#langcc").val(this.value);
+        $('.lang').text('Selected Language :'+a);
+        var temp=a.toLowerCase();
+       if(temp=="c"||temp=="c++"){
+        temp="c_cpp";
+        
+       }
+       if(b=="1"){
+        editor.session.setValue("#include<stdio.h>\nint main(){\n\t//enter code here\n}");
+       }
+       else if(b=="2"){
+        editor.session.setValue("#include<iostream>\nusing namespace std;\nint main(){\n\t//enter code here\n}");
+       }
+       else if(b=="3"){
+        editor.session.setValue("import java.io.*;\nimport java.util.*;\n\npublic class Solution{\n\tpublic static void main(String[] args){\n\t//enter code here\n\t}\n}");
+       }
+      else if(b=="3"){
+        editor.session.setValue("import java.io.*;\nimport java.util.*;\n\npublic class Solution{\n\tpublic static void main(String[] args){\n\t//enter code here\n\t}\n}");
+       }
+       else if(b=="20"){
+        editor.session.setValue("function processData(input) {\n    //Enter your code here\n} \nprocess.stdin.resume();\nprocess.stdin.setEncoding(\"ascii\");\n_input = \"\";\nprocess.stdin.on(\"data\", function (input) {\n    _input += input;\n});\nprocess.stdin.on(\"end\", function () {\n   processData(_input);\n});");
+       }
+     
+       else if(b=="7"){
+        editor.session.setValue("<?php\n$_fp = fopen(\"php://stdin\", \"r\");\n/* Enter your code here. Read input from STDIN. Print output to STDOUT */\n?>   ");
+       } 
+       else if(b=="199"){
+        editor.session.setValue("Select a Language");
+       }
+       else{
+        editor.session.setValue("#enter your code here");
+       }
+        var src='ace/mode/'+temp;
+         editor.getSession().setMode(src);
+
+      
+         
+        });
+
+      
+            
+        });
+
+/*http://api.hackerrank.com/checker/submission.json -d 'source=print 1&lang=5&testcases=["1"]&api_key=hackerrank|161256-622|faa76a548e2dce2ef37df6a68d4dc0c75bd760f3'*/
+</script>
+<div id="clockdiv">
+<div class="finish_top">
+  <form action="finish/"  method="POST" id="finish" >
+  {% csrf_token %}
+  <input type="hidden" id="time_fin" name="time" value=""/>
+  <button class="btn btn-success pull-finish" onclick="finish()">Finish</button>
+  
+</form>
+</div>
+<!-- <div class="bg">
+
+  <span class="hours"></span>&nbsp;
+    <span class="minutes"></span>&nbsp;
+
+    <span  class="seconds"></span>
+    <div class="min_sec">&nbsp;
+    <span class="smalltext">Hours</span>
+    <span class="smalltext">Minutes</span>
+
+    <span class="smalltext">Seconds</span>
+  </div>
+
+  </div>
+  <input type="hidden" name="cantime" class="cantime" id="cantime">
+
+</div>
+ -->
+<!-- <hr size="3"> -->
+
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">{ HackerSpace }</a>
+            </div>
+
+            <div class="header-right">
+
+              <a href="#" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
+                <a href="#" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
+                <a href="#" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+
+
+            </div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <!-- <img src="assets/img/user.png" class="img-thumbnail" /> -->
+
+                            <div class="inner-text">
+                                Name
+                            <br />
+                                <small><!-- Last Login : 2 Weeks Ago --> </small>
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                        <a  class="active-menu" href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-head-line"></h1>
+                       <!--  <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1> -->
+
+                    </div>
+                </div>
+    
+
+
+
+<!-- <script type="text/javascript">
+ function getTimeRemaining(endtime) {
+  // var t= new Date(Date.parse(new Date(endtime)) - Date.parse(new Date()));
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor( (t/1000) % 60 );
+  var minutes = Math.floor( (t/1000/60) % 60 );
+  var hours = Math.floor( (t/(1000*60*60)) % 24 );
+
+  
+  return {
+    'total' : t,
+    'minutes': minutes,
+    'seconds': seconds,
+    'hours': hours
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+  var hoursSpan = clock.querySelector('.hours');
+  var time = clock.querySelector('.cantime');
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+    hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+    minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+    time.value=('' + t.total-1);
+    
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+ 
+    }
+  }
+  
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+// var timeInMinutes = 10;
+// var currentTime = Date.parse(new Date());
+// var deadline = new Date(currentTime + timeInMinutes*60*1000);
+function init(time){
+var deadline = new Date(Date.parse(new Date() )+ time);
+initializeClock('clockdiv', deadline);
+}
+ // 15 * 20 * 1000
+ init({{min | safe}});
+
+
+
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="mod-cod">
+<div class="head">
+<form action="navigate/" method="POST" id="nav">
+{% csrf_token %}
+<input type="hidden" name="time" id="time" value="">
+{% if '0' in attended %}
+<button class="btn btn-success one"  type="button">1</button>
+{% endif %}
+{% if '0' not in attended %}
+{% if '0' in qno%}
+<button class="btn btn-warning" onclick="post_time()" name="1">1</button>
+{% else %}
+<button class="btn btn-info" onclick="post_time()" name="1">1</button>
+{% endif %}
+{% endif %}
+
+{% if '1' not in attended %}
+{% if '1' in qno %}
+<button class="btn btn-warning" onclick="post_time()" name="2">2</button>
+{% else %}
+<button class="btn btn-info" onclick="post_time()" name="2">2</button>
+{% endif %}
+{% endif %}
+
+{% if '1' in attended %}
+<button class="btn btn-success"  type="button">2</button>
+{% endif %}
+
+{% if '2' not in attended %}
+{% if '2' in qno %}
+<button class="btn btn-warning" onclick="post_time()" name="3">3</button>
+{% else %}
+<button class="btn btn-info" onclick="post_time()"name="3">3</button>
+{% endif %}
+{% endif %}
+
+{% if '2' in attended %}
+<button class="btn btn-success"  type="button">3</button>
+{% endif %}
+
+{% if '3' not in attended %}
+{% if '3' in qno %}
+<button class="btn btn-warning" onclick="post_time()" name="4">4</button> 
+{% else %}
+<button class="btn btn-info" onclick="post_time()" name="4">4</button> 
+{% endif %}
+{% endif %}
+
+{% if '3' in attended %}
+<button class="btn btn-success"  type="button">4</button> 
+{% endif %}
+
+{% if '4' not in attended %}
+{% if '4' in qno %}
+<button class="btn btn-warning" onclick="post_time()" name="5">5</button> 
+{% else %}
+<button class="btn btn-info" onclick="post_time()" name="5">5</button> 
+{% endif %}
+{% endif %}
+{% if '4' in attended %}
+<button class="btn btn-success"  type="button">5</button> 
+{% endif %}
+
+</form>
+</div>
+<div id="top " class="page-top pull-up">
+<div class="container">
+<div class="blnk"></div>
+<div class="row">
+<div class="col-sm-6">
+
+<div class="ps" style="width:500px;">
+<h2 id="quest"></h2>
+<div  class="tt" id="ttt">
+{{question | safe}}
+</div>
+
+</div>
+</div>
+<!-- <button onclick=paste_code({{source_code | safe}})>asd</button> -->
+
+
+<div class="row">
+<div class="col-sm-6">
+<div class="edto">
+ <div class="dropdown">
+    <button class="btn btn-active dropdown-toggle" type="button" data-toggle="dropdown">Language
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" >
+      
+      <li class="lol" value="1"><a href="#">C</a></li>
+      <li class="lol" value="2"><a href="#">C++</a></li>
+      <li class="lol" value="3"><a href="#">Java</a></li>
+      <li class="lol" value="8"><a href="#">Ruby</a></li>
+      <li class="lol" value="5"><a href="#">Python</a></li>
+      <li class="lol" value="7"><a href="#">PHP</a></li>
+      <li class="lol" value="20"><a href="#">JavaScript</a></li>
+    </ul>
+    
+    <b class="lang">Select A Language</b>
+  </div>
+<div id="editor">
+</div>
+
+<!-- <div class="post_buttons"> -->
+<div class="subm ">
+
+<form method="POST" action="save_source/" id="source_code"> 
+{% csrf_token %}
+<input type="hidden" id="time_save" name="time" value=""/>
+<input type="hidden" id="source" name="source" value=""/>
+<input type="hidden" id="language_selected" name="language" value=""/>
+<button onclick="save_code()" class="btn btn-primary start">Save Code</button>
+</form>
+<div class="finish">
+
+<a class="com btn btn-primary page-scroll" onclick="cpl()" href="#compile"> Run</a>&nbsp;&nbsp;&nbsp;
+{% if '5' not in count %}
+<button class="btn btn-primary" id="sb" onclick="cpll()">Submit</button>
+{% elif '5' in count %}
+<button class="btn btn-primary" id="sb" onclick="cpll()">Submit &amp; Finish</button>
+{% endif %}
+
+</div>
+
+<!-- </div> -->
+</div>
+</div>
+<!--<iframe src="http://api.hackerrank.com/checker/languages.json"></iframe>-->
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    //editor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().setMode("ace/mode/c_cpp");
+    ace.require("ace/ext/language_tools");
+
+editor.setOptions({
+    enableBasicAutocompletion: true
+});
+
+</script>
+
+<script>
+function cpl(){
+  var editor = ace.edit("editor");
+  var code=editor.getValue();
+
+  //alert(code);
+  document.getElementById('src').value=code;
+  document.getElementById('moodleform').submit();
+
+}
+</script>
+<script>
+function cpll(){
+  var editor = ace.edit("editor");
+  var code=editor.getValue();
+
+  //alert(code);
+  document.getElementById('srcc').value=code;
+  var x=document.getElementById('cantime').value;
+  document.getElementById('time_submit').value=x;
+  document.getElementById('modleform').submit();
+  
+  document.getElementById('sb').removeAttribute('onclick');
+
+}
+</script>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!--<button type="button" id="btn" onclick="lnmo()" >chk</button>-->
+<br><br>
+<div id="cpile">
+    <div class="container-fluid">
+    <div class="row">
+<div class="col-sm-6">
+<h2>         &nbsp;</h2>
+
+  <form name="model"
+      id="moodleform" target="iframe"
+      method="POST" action="/get/" enctype='application/json'
+>
+    {% csrf_token %}
+    <input type="hidden" id="src" name="source" value=""/>
+    <input type="hidden" id="langc" name="lang" value=""/>
+    <input type="hidden" id="test" name="testcases" value={{testcases}}/>
+    
+    <input type="hidden" id="out" name="output" value={{output}}/>
+
+</form>
+ <form name="model"
+      id="modleform" 
+      method="POST" action="/sub/" enctype='application/json'
+>
+    {% csrf_token %}
+    <input type="hidden" name="time" id="time_submit" value=""/>
+    <input type="hidden" id="srcc" name="source" value=""/>
+    <input type="hidden" id="langcc" name="lang" value=""/>
+    <input type="hidden" id="testc" name="testcases" value={{submit}}/>
+    <input type="hidden" id="usrc" name="usr" value=""/>
+    <input type="hidden" id="outc" name="output" value={{output}}/>
+    <input type="hidden" id="scoref" name="scoref" value=""/>
+    <!-- <input type="hidden" id="qno" name="qno" value={{qno}}/> -->
+    
+
+</form>
+  <form name="model"
+      id="home"
+      method="POST" action="/feed/" enctype='application/json'
+>
+    {% csrf_token %}
+  
+    
+    <input type="hidden" id="outf" name="user" value=""/>
+    <input type="hidden" id="scorec" name="scorec" value=""/>    
+
+</form>
+
+  <form name="model"
+      id="chck"
+      method="POST" action="/bye/" enctype='application/json'
+>
+    {% csrf_token %}
+ 
+    
+    <input type="hidden" id="finalusername" name="user" value=""/>
+    <input type="hidden" id="finalscore" name="scorec" value=""/>    
+
+</form>
+
+
+<input type="hidden" id="username" name="username" value="{{username}}"/>
+<input type="hidden" id="result" name="result" value="{{result}}"/>
+<div class="compilelog" >
+<iframe  id="iframe" name="iframe"  >
+ 
+</iframe></div>
+<!--<b>Compile Message&nbsp; : &nbsp;line1,prit
+                            <br> Syntax Error&nbsp;:&nbsp;invalid syntax<br><br></b>-->
+</div>
+</div></div>
+
+<!-- </section> -->
+</div>
+</div>
+
+{% if "^" not in source_code %}
+
+<script type="text/javascript">
+function paste_code(code,lang){
+  var editor = ace.edit("editor");
+  editor.session.setValue(code);
+  document.getElementById('langc').value=lang;
+  document.getElementById('langcc').value=lang;
+  // $('.lang').text('Selected Language :'+a);
+  $('.lang').text('Language Already Selected');
+
+}
+paste_code({{source_code |safe}},{{lang | safe}});
+</script>
+{% endif %}
+
+<script type="text/javascript">
+function endgame(remaining){ 
+  // alert(remaining);
+    // window.setTimeout(document.finish.submit.bind(document.finish), parseInt(remaining));
+    // window.setTimeout(function(){document.getElementById('finish').submit();},parseInt(remaining));
+};
+endgame({{min | safe}});  
+function post_time(){
+var x=document.getElementById('cantime').value;
+document.getElementById('time').value=x;
+document.getElementById('nav').submit();
+// alert(x);
+
+}
+// time();
+function full(){
+  var elem = document.getElementById("clockdiv");
+if (elem.requestFullscreen) {
+  elem.requestFullscreen();
+}
+}
+full();
+
+</script>
+<script type="text/javascript">
+function finish(){
+  
+  
+  var x=document.getElementById('cantime').value;
+  // alert(x);
+  document.getElementById('time_fin').value=x;
+
+  
+  // document.getElementById('finish').submit();
+
+}
+</script>
+<script type="text/javascript">
+  function submitAdvice(evt) {
+    // evt.preventDefault();
+    alert('submitting');
+    return false;
+}
+</script>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <div id="footer-sec">
+        <!-- &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a> -->
+    </div>
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+  <script src="{% static 'assets/js/jquery-1.10.2.js' %}"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'assets/js/jquery.metisMenu.js' %}"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+</html>

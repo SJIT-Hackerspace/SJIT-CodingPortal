@@ -50,3 +50,6 @@ class VerbalQuestion(models.Model):
 
 	def __str__(self):
 		return self.question+self.op1+self.op2+self.op3+self.op4+str(self.subCategory)
+
+
+    

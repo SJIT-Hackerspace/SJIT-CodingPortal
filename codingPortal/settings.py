@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Subcategories',
     'Questions',
     'Student',
+    'QuestionDumps',
     
 ]
 

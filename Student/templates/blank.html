@@ -14,7 +14,7 @@
     <!--CUSTOM MAIN STYLES-->
     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
 
     <style type="text/css">
         ::-webkit-scrollbar{
@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <!-- /. ROW  -->
-                <div class="row">
+       <!--          <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-info">
                              <div class="panel panel-default">
@@ -260,7 +260,7 @@
 </div>
 </div>
 </div>
-</div>                    <!--  -->
+</div>                  -->   <!--  -->
 
 
 <div class="row">
@@ -268,7 +268,7 @@
                         <div class="alert alert-info">
                              <div class="panel panel-default">
                         <div class="panel-heading">
-                            All Scheduled Tests
+                         Scheduled Tests
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -296,6 +296,20 @@
 <td><button type="submit" name="{{test.TestName}}" value="{{test.TestName}}">Take Test</button></td>
 </tr>
 {% endfor %}
+
+{% for test in prog %}
+<tr>
+<td>{{test.TestName}}</td>
+<td>{{test.StartDate}}</td>
+<td>{{test.StartTime}} </td>
+<td>{{test.EndDate}}</td>
+<td>{{test.EndTime}}</td>
+<!-- <input type="hidden" id="testname" name="testname" value="{{test.TestName}}"> -->
+<td><button type="submit" name="{{test.TestName}}" value="{{test.TestName}}">Take Test</button></td>
+</tr>
+{% endfor %}
+
+
 </table>
 </form>
 </div>

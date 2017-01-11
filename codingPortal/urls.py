@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('hackerspace.urls')),
     url(r'^',include('Student.urls')),
+    url(r'^',include('Questions.urls')),
     
 ]

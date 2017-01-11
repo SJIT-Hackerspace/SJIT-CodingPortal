@@ -1,0 +1,137 @@
+.a{
+color:green;
+}
+h1{
+
+	/*background-color: black;*/
+	/*font-family: 'Oxygen', sans-serif;*/
+	text-align: center;
+
+
+}
+.g{
+	margin-top: 13vh;
+	margin-left: 36vw;
+}
+
+.te{
+	
+	margin-top: 12vh;
+	margin-left: 6vw;
+}
+
+
+
+    #editor { 
+        
+        
+        right: 0;
+        width: 40vw;
+
+height: 500px;
+
+
+    }
+    .hed{
+        cursor: pointer;
+    }
+    .subm{
+        margin:10px 20px 10px 620px;
+    }
+    .edto{
+        margin-top: 2vh;
+        margin-right: 2vw;
+      /*  margin-left: -82px;*/
+                }
+
+    .ps{
+        width: 70vw;
+height: 536px;
+background-color: silver;
+overflow: auto;
+
+
+    }
+
+    font {
+/*        font-family: 'Press Start 2P', cursive;*/
+    	/*font-family: 'VT323' ;*/
+/*border-style: solid;
+        border-width: 3.2px;*/
+    }
+.tt{
+    letter-spacing: 0px;
+word-spacing: 4px;
+text-align: justify;
+margin-left: 20px;
+margin-right: 20px;
+margin-bottom: 12px;
+
+}
+h2{
+    text-align: center;
+}
+.blnk{
+    margin-bottom: 5vh;
+
+}
+.top{
+    float: right;
+    margin-right:12px;
+    margin-top: 2vh;
+
+}
+#cpile{
+   /* background-color: #bcbcbc;*/
+   margin-left: 1.3vw;
+    text-align: justify;
+    height: 40vh;
+    width: 70vw;
+-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.75);
+}
+.iframe{
+    width: 100%;
+}
+.ps{
+	
+-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.75);
+
+}
+.edto{
+	/*margin-left: -48px;*/
+}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 6 0px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    /*background: rgba(40,120,100,0.8); */
+     background: rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 6 0px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+.mod-cod{
+    z-index: -1;
+}
+
+.brand,.new {
+    z-index: 99;
+}
+#sidebar{
+    z-index: 88;
+}

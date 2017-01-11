@@ -25,7 +25,8 @@ class Programming(models.Model):
 
 
 	def __str__(self):
-		return str(self.pgmtags[int(self.ProgrammingTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
+		# return ("Ss")
+		return str(str(self.StartDate)+" | "+str(self.StartTime)+" | "+str(self.EndDate)+" | "+str(self.EndTime)+" | "+str(self.batch[int(self.Batch)-1][1])+" | "+str(self.dept[int(self.Department)-1][1]))
 
 class Quiz(models.Model):
 	dept = Department.objects.values_list()
@@ -49,7 +50,7 @@ class Quiz(models.Model):
 
 
 	def __str__(self):
-		return str(self.quiztags[int(self.QuizTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
+		return str(str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1]))
 
 class Verbal(models.Model):
 	dept = Department.objects.values_list()
@@ -71,7 +72,7 @@ class Verbal(models.Model):
 		verbose_name_plural = 'Verbal'
 		
 
-
+# self.verbaltags[int(self.VerbalTagName)-1][1])+" "+
 	def __str__(self):
-		return str(self.verbaltags[int(self.VerbalTagName)-1][1])+" "+str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1])
+		return str(str(self.StartDate)+" "+str(self.StartTime)+" "+str(self.EndDate)+" "+str(self.EndTime)+" "+str(self.batch[int(self.Batch)-1][1])+" "+str(self.dept[int(self.Department)-1][1]))
 
